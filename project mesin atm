@@ -1,0 +1,66 @@
+//aplikasi sederhana mesin ATM 
+#include<iostream>
+using namespace std;
+
+// Saldo awal
+float saldo = 100000;
+
+// Berfungsi untuk menampilkan saldo
+void tampilkanSaldo() {
+    cout << "Saldo Anda saat ini: RP." << saldo << endl;
+}
+
+// Berfungsi untuk menarik uang
+void tarikUang(float jumlah) {
+    if (jumlah > saldo) {
+        cout << "Saldo tidak mencukupi." << endl;
+    } else {
+        saldo -= jumlah;
+        cout << "Penarikan berhasil. Saldo Anda saat ini: RP." << saldo << endl;
+    }
+}
+
+// Berfungsi untuk menyetor uang
+void setorUang(float jumlah) {
+    saldo += jumlah;
+    cout << "Setoran berhasil. Saldo Anda saat ini: RP." << saldo << endl;
+}
+
+int main() {
+    int pilihan;
+    float jumlah;
+
+    do {
+      
+        				cout << "\n=================================================== Mesin ATM ==========================================================\n";
+        cout << "1. Tampilkan Saldo\n";
+        cout << "2. Tarik Uang\n";
+        cout << "3. Setor Uang\n";
+        cout << "4. Keluar\n";
+        cout << "Pilih menu (1-4): ";
+        cin >> pilihan;
+
+        switch (pilihan) {
+            case 1:
+                tampilkanSaldo();
+                break;
+            case 2:
+                cout << "Masukkan jumlah yang ingin ditarik: RP.";
+                cin >> jumlah;
+                tarikUang(jumlah);
+                break;
+            case 3:
+                cout << "Masukkan jumlah yang ingin disetor: RP.";
+                cin >> jumlah;
+                setorUang(jumlah);
+                break;
+            case 4:
+                cout << "Terima kasih telah menggunakan ATM. Sampai jumpa!\n";
+                break;
+            default:
+                cout << "Pilihan tidak valid. Silakan pilih lagi.\n";
+        }
+    } while (pilihan != 4);
+
+    return 0;
+}
